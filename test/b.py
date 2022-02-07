@@ -1,7 +1,8 @@
 from logger import Logger
 
-log_path = 'test_b.log'
-logger = Logger(__name__, log_path).get_logger()
+def msg():
+    log_path = 'test_b.log'
+    logger = Logger(__name__).get_logger()
 
-logger.info('this is b')
-logger.info('b hello')
+    logger.info('this is b')
+    logger.info('b hello')

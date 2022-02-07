@@ -26,19 +26,20 @@ class Logger(object):
         self.logger = logging.getLogger(logger_name)
         self.logger.setLevel(self._get_level(level))
 
-        # handler settings
-        console_handler = logging.StreamHandler()
-        console_handler.setLevel(self._get_level(level))
-        file_handler = logging.FileHandler(log_path if log_path is not None else Logger.log_path)
-        file_handler.setLevel(self._get_level(level))
+        if not self.logger.hasHandlers():
+            # handler settings
+            console_handler = logging.StreamHandler()
+            console_handler.setLevel(self._get_level(level))
+            file_handler = logging.FileHandler(log_path if log_path is not None else Logger.log_path)
+            file_handler.setLevel(self._get_level(level))
 
-        # format settings
-        formatter = logging.Formatter(format, datefmt=datefmt)
-        console_handler.setFormatter(formatter)
-        file_handler.setFormatter(formatter)
+            # format settings
+            formatter = logging.Formatter(format, datefmt=datefmt)
+            console_handler.setFormatter(formatter)
+            file_handler.setFormatter(formatter)
 
-        self.logger.addHandler(console_handler)
-        self.logger.addHandler(file_handler)
+            self.logger.addHandler(console_handler)
+            self.logger.addHandler(file_handler)
 
     def _get_level(self, level: str):
         log_level = {
