@@ -3,10 +3,27 @@
 Log the message to the file and terminal simultaneously.
 
 ## Usage
+Init log_path the first time
 ```python
 from logger import Logger
+logger = Logger(__name__ ,'/path/to/log_file').get_logger()
 
-logger = Logger('/path/to/log_file', __name__).get_logger()
+logger.info('hello world')
+```
+
+Then you can save log message to the log file same as above
+```python
+from logger import Logger
+logger = Logger(__name__).get_logger()
+
+logger.info('hello world')
+```
+
+Or save log message to the new log file
+```python
+from logger import Logger
+logger = Logger(__name__, '/new/path/to/new_log_file').get_logger()
+
 logger.info('hello world')
 ```
 

@@ -1,8 +1,8 @@
 from logger import Logger
-import b
-
 log_path = 'test.log'
-logger = Logger(log_path, __name__).get_logger()
+logger = Logger(__name__, log_path=log_path).get_logger()
+
+import b
 
 logger.info('this is a')
 logger.info('a hello')
